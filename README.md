@@ -10,9 +10,42 @@
 
 ## How it works ?
 
-cf 
+### Export des graphiques en HTML depuis le baromètre
 
+cf https://github.com/azur-scd/barometre-science-ouverte-uca.v2
 
+#### Génération des exports HTML
+
+Les fichiers exportés sont sauvegardés dynamiquement dans /charts_html_files (à la racine du dépôt)
+
+Dans le code : 
+
+```
+import plotly.io as pio
+
+@callback(...)
+def update():
+   ....
+   pio.write_html(fig, file="charts_html_files/publis/oa_rate.html", auto_open=False)
+   return fig
+```
+
+#### Archivage
+
+Copier le contenu de /charts_html_files dans ce dépôt
+
+#### Embedded Iframe
+
+Portion de code hTML à insérer dans n'importe quelle page web
+
+```
+<iframe id="igraph" 
+        scrolling="no" 
+		style="border:none;" 
+		seamless="seamless" 
+		src="https://azur-scd.github.io/bso-plotly-embedded-html/publis/oa_rate.html" 
+		height="525" width="100%"></iframe>
+```
 
 
 
